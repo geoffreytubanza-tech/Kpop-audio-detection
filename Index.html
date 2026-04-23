@@ -1,0 +1,59 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>K-pop Voice Detection (Prototype)</title>
+  <style>
+    body { font-family: Arial; background:#111; color:#fff; margin:0; }
+    .container { padding:20px; }
+    .card { background:#1e1e1e; padding:15px; border-radius:12px; margin:10px 0; }
+    input, button, select { margin:5px 0; padding:8px; border-radius:8px; border:none; }
+    button { background:#ff4da6; color:white; cursor:pointer; }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h1>K-pop Voice Detection (Concept)</h1>  <!-- Step 1: Group Setup -->  <div class="card">
+    <h2>Create Group</h2>
+    <label>Number of Members (max 20):</label><br>
+    <input type="number" id="memberCount" max="20">
+    <button onclick="createMembers()">Create</button>
+  </div>  <!-- Members Area -->  <div id="members"></div>  <!-- Song Upload -->  <div class="card">
+    <h2>Analyze Song</h2>
+    <input type="file" id="songFile"><br>
+    <label>Language:</label>
+    <select>
+      <option>Korean</option>
+      <option>Japanese</option>
+      <option>Thai</option>
+      <option>Chinese</option>
+      <option>English</option>
+    </select><br>
+    <button onclick="analyze()">Analyze</button>
+  </div>  <div id="result"></div>
+</div><script>
+function createMembers(){
+  const count = document.getElementById('memberCount').value;
+  const container = document.getElementById('members');
+  container.innerHTML = '';
+
+  for(let i=1;i<=count;i++){
+    container.innerHTML += `
+      <div class="card">
+        <h3>Member ${i}</h3>
+        <input placeholder="Name"><br>
+        <label>Upload Image:</label>
+        <input type="file"><br>
+        <label>Voice Sample 1:</label>
+        <input type="file"><br>
+        <label>Voice Sample 2:</label>
+        <input type="file"><br>
+      </div>
+    `;
+  }
+}
+
+function analyze(){
+  document.getElementById('result').innerHTML = "\n    <div class='card'>\n      <h3>Results (Demo)</h3>\n      <p>Line 1: Member 1</p>\n      <p>Line 2: Member 3</p>\n      <p>Line 3: Member 2</p>\n      <p><i>(Real AI voice detection not implemented yet)</i></p>\n    </div>\n  ";
+}
+</script></body>
+</html>
